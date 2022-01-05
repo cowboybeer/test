@@ -36,19 +36,15 @@ function sumToTen(n) {
 console.log("Ex1. The Sum: " + sumToTen(7));
 
 //  Exercise 2.
-// find minimun element in array with recursion // no loop
+// find minimum element in array with recursion // no loop
 let arr = [34, 5, 23, 78, 98, 8, 100, 340, 23, 2, 48, 545, 32];
 let size = arr.length;
 
 function findSmallest(arr, size) {
-  if (size === 1) {
-    return arr[arr.length - size];
-  } else if (arr[arr.length - size] > arr[size]) {
-    arr[arr.length - size] = arr[size];
-    return findSmallest(arr, size - 1);
-  } else if ([arr.length - size] < arr[size]) {
-    return findSmallest(arr, size - 1);
+  if (size === 0) {
+    return arr[size];
   } else {
+    return arr[size] < findSmallest(arr, size - 1);
   }
 }
 
@@ -93,14 +89,8 @@ console.log("Ex4. :" + palinDrome(palinDroom, palinDromeSize));
 
 //  Exercise 5
 // recursive function that searches for a target in a sorted array using binary search
-
 function searchTarget(arr, arrSize, target) {
-  //check if the target is bigger or smaller then the middle
-  // or is the middle
-  //console.log(Math.ceil(arrSize / 2));
-
   let middle = arr[Math.floor(arrSize / 2)];
-  //console.log(middle);
 
   if (
     target === middle ||
