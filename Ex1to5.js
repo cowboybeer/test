@@ -41,29 +41,29 @@ let arr = [34, 5, 23, 78, 98, 8, 100, 340, 23, 2, 48, 545, 32];
 let size = arr.length - 1;
 
 function findSmallest(arr, size) {
-  if (arr.length === 1) {
+  if (size === 1) {
     return arr[0];
-  } else if (arr[0] > arr[arr.length - 1]) {
-    arr.shift();
-    return findSmallest(arr, size);
-  } else if (arr[0] < arr[arr.length - 1]) {
-    arr.pop();
-    return findSmallest(arr, arr.length);
+  } else if (arr[0] > arr[size]) {
+    arr[0] = arr[size];
+    return findSmallest(arr, size - 1);
+  } else if (arr[0] < arr[size]) {
+    return findSmallest(arr, size - 1);
+  } else {
   }
 }
 
-console.log("Ex2: " + findSmallest(arr, arr.length));
+console.log("Ex2: " + findSmallest(arr, size));
 
 // Exercise 3.
 // recursive function that returns the sum of all elements in an array
-let newArr = [34, 546, 23, 12, 4, 768, 7, 54, 23, 54, 56];
+let newArr = [34, 546, 23, 12, 4, 68, 7, 54];
 let newSize = newArr.length - 1;
 
 function sumOfArray(arr, size) {
   if (size === 0) {
-    return arr;
+    return arr[0];
   } else {
-    let val = arr.pop();
+    let val = arr[size];
     arr[0] = arr[0] + val;
     return sumOfArray(arr, size - 1);
   }
@@ -74,19 +74,18 @@ console.log("Ex3: " + sumOfArray(newArr, newSize));
 //Exercise 4: check whether an array is a palindrome
 let notPalinDroom = ["h", "a", "l", "l", "o"];
 let palinDroom = ["m", "e", "e", "t", "s", "y", "s", "t", "e", "e", "m"];
-let palinDromeSize = palinDroom.length - 1;
-let notPalinDromeSize = notPalinDroom.length - 1;
+let palinDromeSize = palinDroom.length;
+let notPalinDromeSize = notPalinDroom.length;
 let onno = ["o", "n", "n", "o"];
 
+console.log(palinDroom[palinDroom.length - 1]);
+
 function palinDrome(arr, size) {
-  if (arr[0] === arr[size]) {
-    arr.pop();
-    arr.shift();
-    // console.log(arr);
-    if (arr.length == 1 || arr.length == 0) {
+  if (arr[arr.length - size - 1] === arr[size]) {
+    if (size == 1 || size == 0) {
       return true;
     }
-    return palinDrome(arr, arr.length - 1);
+    return palinDrome(arr, size - 1);
   } else {
     return false;
   }
@@ -127,4 +126,3 @@ let testArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 console.log(testArr.length);
 
 searchTarget(testArr, testArr.length, 3);
-
