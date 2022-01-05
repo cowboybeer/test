@@ -38,15 +38,15 @@ console.log("Ex1. The Sum: " + sumToTen(7));
 //  Exercise 2.
 // find minimun element in array with recursion // no loop
 let arr = [34, 5, 23, 78, 98, 8, 100, 340, 23, 2, 48, 545, 32];
-let size = arr.length - 1;
+let size = arr.length;
 
 function findSmallest(arr, size) {
   if (size === 1) {
-    return arr[0];
-  } else if (arr[0] > arr[size]) {
-    arr[0] = arr[size];
+    return arr[arr.length - size];
+  } else if (arr[arr.length - size] > arr[size]) {
+    arr[arr.length - size] = arr[size];
     return findSmallest(arr, size - 1);
-  } else if (arr[0] < arr[size]) {
+  } else if ([arr.length - size] < arr[size]) {
     return findSmallest(arr, size - 1);
   } else {
   }
@@ -61,11 +61,9 @@ let newSize = newArr.length - 1;
 
 function sumOfArray(arr, size) {
   if (size === 0) {
-    return arr[0];
+    return arr[size];
   } else {
-    let val = arr[size];
-    arr[0] = arr[0] + val;
-    return sumOfArray(arr, size - 1);
+    return (arr[size] += sumOfArray(arr, size - 1));
   }
 }
 
