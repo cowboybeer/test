@@ -1,5 +1,4 @@
 //Fibonacci
-
 function fib(n) {
   if (n === 1) {
     return 1;
@@ -13,39 +12,26 @@ function fib(n) {
 // how many times the function should run
 console.log("Fibonacci: " + fib(7));
 
-// //test example from internet
-// function factorial(n) {
-//   if (n == 1) {
-//     return 1;
-//   } else {
-//     return n * factorial(n - 1);
-//   }
-// }
-// console.log(factorial(3));
-
 //////////////------ EXERCISES --------- //////////////////
 //  Exercise 1 Improved
 function sumToTen(n) {
-  if (n == 0) {
-    return n;
-  } else {
-    return n + sumToTen(n - 1);
-  }
+  return n == 0 ? n : n + sumToTen(n - 1);
 }
-
-console.log("Ex1. The Sum: " + sumToTen(7));
+console.log("Ex1. The Sum: " + sumToTen(8));
 
 //  Exercise 2.
 // find minimum element in array with recursion // no loop
-let arr = [34, 5, 23, 78, 98, 8, 100, 340, 23, 2, 48, 545, 32];
-let size = arr.length;
+// like in the compare function ...
+// subtract a from b and if the result is negative then a is smaller
+
+let arr = [34, 5, 23, 78, 98, 8, 100, 340, 23, 2, 48, 545, 36];
+let size = arr.length - 1;
 
 function findSmallest(arr, size) {
+  // compare a - b
   if (size === 0) {
-    return arr[size];
-  } else {
-    return arr[size] < findSmallest(arr, size - 1);
-  }
+    return;
+  } 
 }
 
 console.log("Ex2: " + findSmallest(arr, size));
@@ -56,11 +42,7 @@ let newArr = [34, 546, 23, 12, 4, 68, 7, 54];
 let newSize = newArr.length - 1;
 
 function sumOfArray(arr, size) {
-  if (size === 0) {
-    return arr[size];
-  } else {
-    return (arr[size] += sumOfArray(arr, size - 1));
-  }
+  return size === 0 ? arr[size] : (arr[size] += sumOfArray(arr, size - 1));
 }
 
 console.log("Ex3: " + sumOfArray(newArr, newSize));
@@ -87,30 +69,27 @@ function palinDrome(arr, size) {
 
 console.log("Ex4. :" + palinDrome(palinDroom, palinDromeSize));
 
-//  Exercise 5
-// recursive function that searches for a target in a sorted array using binary search
-function searchTarget(arr, arrSize, target) {
-  let middle = arr[Math.floor(arrSize / 2)];
+// Exercise 5
+// Binary search formula : arr.length = (n/2)/2 = n/(2^k)
 
-  if (
-    target === middle ||
-    target === arr[0] ||
-    target === arr[arr.length - 1]
-  ) {
-    console.log(" from exercise 5 : found!!");
-  } else if (target < middle) {
-    console.log("smaller");
-    arr = arr.slice(0, middle);
-    console.log(arr);
-    searchTarget(arr, arr.length, target);
-  } else if (target > middle) {
-    arr = arr.slice(middle, arr.length);
-    console.log(arr);
-    searchTarget(arr, arr.length, target);
+//  2^k means that ?? -> k will be the necessary numbers o iterations
+//  at one point this will happen n/(2^k)=1;
+
+let testArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let testArrSize = testArr.length;
+
+function binSearch(arr, arrSize, target) {
+  let mid = arr[Math.floor(arrSize / 2)];
+  console.log(mid);
+  if (target === mid) {
+    return arr[mid];
+  } else if (target < mid) {
+    //call again , but with half beginning of array
+    return binSearch(arr.slice(0, mid), arrSize / 2, target);
+  } else {
+    return binSearch(arr.slice(mid, arrSize), arrSize / 2, target);
   }
 }
 
-let testArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-console.log(testArr.length);
+binSearch(testArr, testArrSize, 9);
 
-searchTarget(testArr, testArr.length, 3);
