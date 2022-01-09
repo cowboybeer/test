@@ -72,10 +72,18 @@ function largestNum(arr, size) {
 
 console.log(largestNum(largeArr, largeArrSize));
 
-// 4. write a recursive function that finds the first number between two given
-//  numbers a and b: findBetween(array, a, b)
-let oneArray = [24, 476, 87, 34, 367, 578, 232, 656, 21];
+//4. write a recursive function that finds the first number 
+// between two given numbers a and b: findBetween(array, a, b) 
+let testArr = [1,4,5,78,96,43,12,35,657,87,34]
 
-function findBetween(arr, a, b) {}
+function findBetween(arr, a, b){
+  //base case
+  if(a == b){
+    let placeA = arr.indexOf(a)
+    return arr[placeA +1]
+  } 
+  //recursive call
+   return findBetween(arr, a, b-1)
+}
 
-console.log(findBetween(oneArray, 87, 232));
+console.log(findBetween(testArr, 5, 12))
