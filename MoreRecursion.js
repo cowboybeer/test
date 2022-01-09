@@ -87,3 +87,46 @@ function findBetween(arr, a, b){
 }
 
 console.log(findBetween(testArr, 5, 12))
+
+/*
+ * 5. write a function that returns the n-th number on the 'funky series'. The 'funky series' is defined as follows:
+ *   1st number F_1: 3
+ *   2nd number F_2: 5
+ *   any other number: 11 + ((F_(n-1)^2) / F_(n-2))
+ * 
+ *   (F_(n-1) squared divided by F_(n-2) -- then add 11 to the result
+ *
+ *   where F_(n-1) is the previous number on the 'Funky series', and F_(n-2) is the number before that
+ */
+
+function funkySeries(n){
+  //base case
+  if(n == 2){
+    return [3,5]
+  }
+  else {
+    const numArr = funkySeries(n-1)
+    numArr.push((((Math.pow(n-1,2)) / (n-2)) + 11 ))
+    return numArr;
+  }
+}
+
+console.log(funkySeries(6))
+
+
+//Funky Series for number 5: //Logical Breakdown // I Think
+/// n-1
+console.log((5-1))
+// n-1 squared by 2
+console.log(Math.pow(5-1,2))
+// 16
+
+// n-2    ////// = 3
+console.log((5-2))
+
+// ((n-1)^2) / (n-2)
+// 16 / 3  ////// = 5.33
+console.log(16/3)
+
+// + 11   /////////// 16.33
+console.log((16/3) + 11)
