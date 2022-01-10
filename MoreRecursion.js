@@ -130,3 +130,37 @@ console.log(16/3)
 
 // + 11   /////////// 16.33
 console.log((16/3) + 11)
+
+
+//*** TESTING STUFF ***////
+
+//try a double for loop
+let testArr = [];
+for (let i = 0; i < 3; i++) {
+  for (let j = 0; j < 3; j++) {
+    testArr.push([i, j]);
+  }
+}
+
+console.log(testArr);
+
+
+// now the same "Double Loop" with recursion
+let newTestArr = [];
+
+function fillTestArr(n, x) {
+  //base case
+  if (n === 3) {
+    return newTestArr;
+  }
+  if (x === 2) {
+    newTestArr.push([n, x]);
+    x = 0;
+    return fillTestArr(n + 1, x);
+  }
+
+  newTestArr.push([n, x]);
+  return fillTestArr(n, x + 1);
+}
+
+console.log(fillTestArr(0, 0));
