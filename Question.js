@@ -1,11 +1,4 @@
-// TESTING SINGLE LOOP
-let Arr = [];
-for (let i = 0; i < 3; i++) {
-  Arr.push([i]);
-}
-console.log(Arr);
-
-//try a double for loop
+// a nested for loop
 let testArr = [];
 for (let i = 0; i < 4; i++) {
   testArr.push([]);
@@ -15,7 +8,7 @@ for (let i = 0; i < 4; i++) {
 }
 
 console.log(testArr);
-/****
+
 // now the same "Double loop" with recursion. ???
 let newTestArr = [];
 
