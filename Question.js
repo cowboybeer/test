@@ -26,7 +26,6 @@ function fillTestArr(n, x) {
   }
   if (x == 4) {
     // x = 0;
-
     return fillTestArr(n + 1, (x = 0));
   }
 
